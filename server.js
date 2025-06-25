@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const UPSTREAM_URL = 'https://op-group1-swiftservehd-1.dens.tv';
 
-// Serve semua file public (index.html, japan.html, css, dll)
+// Serve semua file public (index.html, japan.html, dll)
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Proxy streaming Indo
@@ -22,6 +22,19 @@ app.get('/stream/*', (req, res) => {
   })).pipe(res);
 });
 
+// Proxy streaming Jepang
+app.get('/streamjapan/*', (req, res) => {
+  const targetUrl = `http://vthanh.utako.moe/${req.params[0]}`;
+
+  req.pipe(request({
+    url: targetUrl,
+    headers: {
+      'User-Agent': 'Mozilla/5.0',
+      'Referer': 'https://utako.moe'
+    }
+  })).pipe(res);
+});
+
 // Route tambahan buat halaman /japan
 app.get('/japan', (req, res) => {
   res.sendFile(path.join(__dirname, 'public/japan.html'));
@@ -30,4 +43,3 @@ app.get('/japan', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Proxy jalan di port ${PORT}`);
 });
-

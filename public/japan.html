@@ -59,7 +59,7 @@
   <div class="desc">Official Streaming Nippon TV</div>
 
   <video id="player" controls autoplay playsinline>
-    <source src="http://vthanh.utako.moe/Nippon_TV/index.m3u8" type="application/vnd.apple.mpegurl">
+    <source src="/streamjapan/Nippon_TV/index.m3u8" type="application/vnd.apple.mpegurl">
     Browser kamu tidak mendukung streaming HLS.
   </video>
 
@@ -68,21 +68,21 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
-  <script>
-    const video = document.getElementById('player');
+<script>
+  const video = document.getElementById('player');
 
-    function loadStream(url) {
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(url);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        video.src = url;
-      }
+  function loadStream(url) {
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(url);
+      hls.attachMedia(video);
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = url;
     }
+  }
 
-    // Load default link
-    loadStream('http://vthanh.utako.moe/Nippon_TV/index.m3u8');
-  </script>
+  // Lewat proxy, aman dari blokir Mixed Content
+  loadStream('/streamjapan/Nippon_TV/index.m3u8');
+</script> 
 </body>
 </html>
