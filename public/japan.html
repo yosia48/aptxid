@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detektif Conan - Live Streaming</title>
+  <title>Live TV Jepang</title>
   <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/187/187207.png" type="image/png">
   <style>
     body {
@@ -36,22 +36,6 @@
       background: #000;
       box-shadow: 0 0 15px rgba(88, 166, 255, 0.4);
     }
-    .link-wrapper {
-      margin-top: 15px;
-    }
-    button {
-      padding: 10px 20px;
-      margin: 5px;
-      background: #238636;
-      color: #fff;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    button:hover {
-      background: #2ea043;
-    }
     .footer {
       margin-top: 25px;
       font-size: 13px;
@@ -70,19 +54,14 @@
 <body>
   <h1>
     <img src="https://cdn-icons-png.flaticon.com/512/187/187207.png" alt="TV Icon" width="30">
-    Live Streaming Detektif Conan
+    Live Streaming Jepang
   </h1>
-  <div class="desc">Official Streaming oleh <a href="https://t.me/detektifconanindonesia" target="_blank">@detektifconanindonesia</a></div>
+  <div class="desc">Official Streaming Nippon TV</div>
 
   <video id="player" controls autoplay playsinline>
-    <source src="/stream/h/h223/01.m3u8" type="application/vnd.apple.mpegurl">
+    <source src="http://vthanh.utako.moe/Nippon_TV/index.m3u8" type="application/vnd.apple.mpegurl">
     Browser kamu tidak mendukung streaming HLS.
   </video>
-
-  <div class="link-wrapper">
-    <button onclick="gantiStream(1)">Link 1</button>
-    <button onclick="gantiStream(2)">Link 2</button>
-  </div>
 
   <div class="footer">
     ❤️ Terima kasih sudah mendukung komunitas!
@@ -102,13 +81,8 @@
       }
     }
 
-    function gantiStream(nomor) {
-      const url = `https://op-group1-swiftservehd-1.dens.tv/h/h223/0${nomor}.m3u8`;
-      loadStream(url);
-    }
-
     // Load default link
-    loadStream('https://op-group1-swiftservehd-1.dens.tv/h/h223/01.m3u8');
+    loadStream('http://vthanh.utako.moe/Nippon_TV/index.m3u8');
   </script>
 </body>
 </html>
