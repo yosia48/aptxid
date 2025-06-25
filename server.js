@@ -30,3 +30,4 @@ app.get('/japan', (req, res) => {
 app.listen(PORT, () => {
   console.log(`Proxy jalan di port ${PORT}`);
 });
+
