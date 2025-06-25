@@ -6,11 +6,13 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const UPSTREAM_URL = 'https://op-group1-swiftservehd-1.dens.tv';
 
+// Serve semua file di folder public
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Route proxy buat streaming indo
 app.get('/stream/*', (req, res) => {
   const targetUrl = `${UPSTREAM_URL}/${req.params[0]}`;
-
+  
   req.pipe(request({
     url: targetUrl,
     headers: {
@@ -18,6 +20,11 @@ app.get('/stream/*', (req, res) => {
       'Referer': 'https://dens.tv'
     }
   })).pipe(res);
+});
+
+// Route tambahan buat halaman /japan
+app.get('/japan', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/japan.html'));
 });
 
 app.listen(PORT, () => {
